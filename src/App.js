@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import "./App.css";
+import Form from "./components/Form/Form";
+import Countdown from "./components/Countdown/Countdown";
+import Logo from "./assets/images/tiki_logo.png";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <img src={Logo} alt="logo" width="150px" />
       </header>
+
+      <main>
+        <h1>The time you start working at Tiki</h1>
+        <p>
+          Everything that you love about coffee now you can find on your code!
+        </p>
+        <Form />
+        <Countdown />
+      </main>
+
+      <footer>
+        <p>
+          Created by{" "}
+          <span>
+            Chau Dinh{" "}
+            <span aria-label="shit" role="img">
+              💩
+            </span>{" "}
+            2020
+          </span>
+        </p>
+      </footer>
     </div>
   );
 }
