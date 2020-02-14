@@ -24,6 +24,10 @@ export default class Countdown extends React.Component {
 
   componentDidMount() {
     this.getTime();
+    if (this.state.seconds === 0) {
+      // alert("Countdown Completed!");
+      clearInterval(this.timerID);
+    }
     this.timerID = setInterval(() => {
       this.getTime();
     }, 10);
@@ -34,7 +38,7 @@ export default class Countdown extends React.Component {
   }
 
   shouldComponentUpdate() {
-    if (this.state.timeLeft <= 0) {
+    if (this.state.seconds < 0) {
       return false;
     }
     return true;
@@ -61,81 +65,92 @@ export default class Countdown extends React.Component {
   render() {
     return (
       <div className="countdown__wrapper">
-        {this.state.timeLeft < 0 ? alert("Countdown Completed!") : null}
-        <div className="years">
-          <span className="value">
-            {this.fixLeadingZero(this.state.years < 0 ? 0 : this.state.years)}
-          </span>
-          Years
-        </div>
-        <div
-          className="colon"
-          style={{
-            fontSize: "30px",
-            margin: "0 10px",
-            color: "#fff"
-          }}
-        >
-          :
-        </div>
-        <div className="months">
-          <span className="value">
-            {this.fixLeadingZero(this.state.months < 0 ? 0 : this.state.months)}
-          </span>
-          Months
-        </div>
-        <div
-          className="colon"
-          style={{ fontSize: "30px", margin: "0 10px", color: "#fff" }}
-        >
-          :
-        </div>
-        <div className="days">
-          <span className="value">
-            {this.fixLeadingZero(this.state.days < 0 ? 0 : this.state.days)}
-          </span>
-          Days
-        </div>
-        <div
-          className="colon"
-          style={{ fontSize: "30px", margin: "0 10px", color: "#fff" }}
-        >
-          :
-        </div>
-        <div className="hours">
-          <span className="value">
-            {this.fixLeadingZero(this.state.hours < 0 ? 0 : this.state.hours)}
-          </span>
-          Hours
-        </div>
-        <div
-          className="colon"
-          style={{ fontSize: "30px", margin: "0 10px", color: "#fff" }}
-        >
-          :
-        </div>
-        <div className="minutes">
-          <span className="value">
-            {this.fixLeadingZero(
-              this.state.minutes < 0 ? 0 : this.state.minutes
-            )}
-          </span>
-          Minutes
-        </div>
-        <div
-          className="colon"
-          style={{ fontSize: "30px", margin: "0 10px", color: "#fff" }}
-        >
-          :
-        </div>
-        <div className="seconds">
-          <span className="value">
-            {this.fixLeadingZero(
-              this.state.seconds < 0 ? 0 : this.state.seconds
-            )}
-          </span>
-          Seconds
-        </div>
+        {this.state.timeLeft < 0 ? (
+          <div>Countdown Completed!</div>
+        ) : (
+          <>
+            <div className="years">
+              <span className="value">
+                {this.fixLeadingZero(
+                  this.state.years < 0 ? 0 : this.state.years
+                )}
+              </span>
+              Years
+            </div>
+            <div
+              className="colon"
+              style={{
+                fontSize: "30px",
+                margin: "0 10px",
+                color: "#fff"
+              }}
+            >
+              :
+            </div>
+            <div className="months">
+              <span className="value">
+                {this.fixLeadingZero(
+                  this.state.months < 0 ? 0 : this.state.months
+                )}
+              </span>
+              Months
+            </div>
+            <div
+              className="colon"
+              style={{ fontSize: "30px", margin: "0 10px", color: "#fff" }}
+            >
+              :
+            </div>
+            <div className="days">
+              <span className="value">
+                {this.fixLeadingZero(this.state.days < 0 ? 0 : this.state.days)}
+              </span>
+              Days
+            </div>
+            <div
+              className="colon"
+              style={{ fontSize: "30px", margin: "0 10px", color: "#fff" }}
+            >
+              :
+            </div>
+            <div className="hours">
+              <span className="value">
+                {this.fixLeadingZero(
+                  this.state.hours < 0 ? 0 : this.state.hours
+                )}
+              </span>
+              Hours
+            </div>
+            <div
+              className="colon"
+              style={{ fontSize: "30px", margin: "0 10px", color: "#fff" }}
+            >
+              :
+            </div>
+            <div className="minutes">
+              <span className="value">
+                {this.fixLeadingZero(
+                  this.state.minutes < 0 ? 0 : this.state.minutes
+                )}
+              </span>
+              Minutes
+            </div>
+            <div
+              className="colon"
+              style={{ fontSize: "30px", margin: "0 10px", color: "#fff" }}
+            >
+              :
+            </div>
+            <div className="seconds">
+              <span className="value">
+                {this.fixLeadingZero(
+                  this.state.seconds < 0 ? 0 : this.state.seconds
+                )}
+              </span>
+              Seconds
+            </div>
+          </>
+        )}
       </div>
     );
   }
