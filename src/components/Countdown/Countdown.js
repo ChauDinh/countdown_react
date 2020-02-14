@@ -47,7 +47,6 @@ export default class Countdown extends React.Component {
   getTime() {
     const timeLeft =
       localStorage.getItem("date.parse") - Date.parse(new Date());
-
     const seconds = Math.floor((timeLeft / 1000) % 60);
     const minutes = Math.floor((timeLeft / 1000 / 60) % 60);
     const hours = Math.floor((timeLeft / 1000 / 60 / 60) % 24);
@@ -66,7 +65,25 @@ export default class Countdown extends React.Component {
     return (
       <div className="countdown__wrapper">
         {this.state.timeLeft < 0 ? (
-          <div>Countdown Completed!</div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "18px"
+            }}
+          >
+            <i
+              className="far fa-check-circle"
+              style={{
+                color: "#00ff00",
+                fontSize: "40px",
+                marginBottom: "10px"
+              }}
+            ></i>{" "}
+            Countdown Completed!
+          </div>
         ) : (
           <>
             <div className="years">

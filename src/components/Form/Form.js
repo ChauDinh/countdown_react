@@ -27,18 +27,20 @@ export default class Form extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const isValid = this.validate();
+
     if (isValid) {
-      console.log(this.state);
       localStorage.setItem("date.parse", Date.parse(this.state.date));
       // Clear form
-      this.setState(initialState);
+      this.setState({
+        dateError: ""
+      });
     }
   }
 
   validate() {
     let dateError = "";
     if (!this.state.date.includes("-")) {
-      dateError = "invalid date input!";
+      dateError = "incompleted or invalid date input!";
     }
 
     if (dateError) {
