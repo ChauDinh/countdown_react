@@ -72,6 +72,9 @@ body {
 }
 
 @media (max-width: 768px) {
+  .App header img {
+    display: none;
+  }
   .App main {
     padding: 10px;
   }
