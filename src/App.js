@@ -10,7 +10,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header>
-          <img src={Logo} alt="logo" width="150px" />
+          <img src={Logo} alt="logo" />
         </header>
 
         <main>
